@@ -6,11 +6,13 @@ dependencies:
     - core.entity_view_display.comment.comment.default
     - field.field.node.article.body
     - field.field.node.article.comment
+    - field.field.node.article.field_attribution
     - field.field.node.article.field_image
     - field.field.node.article.field_tags
     - image.style.large
     - node.type.article
   module:
+    - attribution
     - comment
     - image
     - text
@@ -38,6 +40,13 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+  field_attribution:
+    weight: 111
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: attribution_creative_commons_icons
+    region: content
   field_image:
     type: image
     weight: -1
