@@ -1,0 +1,12 @@
+uuid: 20afd0b2-57e0-4f23-83e7-196210a98040
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: WHOVDjCHTS8wAqSJ3iTT_CBts6Dpse3ujG7dsWgn4os
+id: cc_by_nc_sa_4_0
+identifier: CC-BY-NC-SA-4.0
+name: 'Creative Commons Attribution Non Commercial Share Alike 4.0 International'
+osiCertified: false
+deprecated: false
+link: 'https://spdx.org/licenses/CC-BY-NC-SA-4.0.html#licenseText'
