@@ -24,6 +24,9 @@
         "drupal/core-recommended": "^9.1",
         "drupal/csp": "^1.14",
         "drupal/gin": "^3.0@dev",
+        "drupal/purge": "^3.0",
+        "drupal/purge_purger_http": "^1.0",
+        "drupal/redis": "^1.5",
         "drush/drush": "^10.4"
     },
     "conflict": {
