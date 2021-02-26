@@ -1,3 +1,5 @@
+_core:
+  default_config_hash: o4-eDkmTmVdUICtL1VxWD3S9Ze8kNq_lHj6DskF8U8o
 report-only:
   enable: true
   directives:
@@ -20,9 +22,40 @@ report-only:
 enforce:
   enable: true
   directives:
+    default-src:
+      base: self
+    child-src:
+      base: self
+    connect-src:
+      base: self
+    font-src:
+      base: self
+    frame-src:
+      base: self
+    img-src:
+      sources:
+        - 'data:'
+      base: self
+    manifest-src:
+      base: self
+    media-src:
+      base: self
+    object-src:
+      base: self
+    prefetch-src:
+      base: self
+    script-src:
+      base: self
+    style-src:
+      base: self
+    worker-src:
+      base: self
+    base-uri:
+      base: self
+    form-action:
+      base: self
     frame-ancestors:
       base: self
+    upgrade-insecure-requests: true
   reporting:
     plugin: sitelog
-_core:
-  default_config_hash: o4-eDkmTmVdUICtL1VxWD3S9Ze8kNq_lHj6DskF8U8o
