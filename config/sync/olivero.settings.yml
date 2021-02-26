@@ -7,7 +7,7 @@ features:
   comment_user_verification: true
   favicon: true
 logo:
-  use_default: false
+  use_default: true
 favicon:
   use_default: true
 mobile_menu_all_widths: 0
