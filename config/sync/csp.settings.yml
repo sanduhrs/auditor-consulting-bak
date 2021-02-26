@@ -56,6 +56,5 @@ enforce:
       base: self
     frame-ancestors:
       base: self
-    upgrade-insecure-requests: true
   reporting:
     plugin: sitelog
