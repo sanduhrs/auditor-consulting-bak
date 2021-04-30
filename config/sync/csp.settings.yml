@@ -23,14 +23,26 @@ enforce:
   enable: true
   directives:
     default-src:
+      sources:
+        - auditor-consulting.dt
+        - auditor-consulting-media.dt
+        - www.youtube.com
       base: self
     child-src:
+      sources:
+        - auditor-consulting.dt
+        - auditor-consulting-media.dt
+        - www.youtube.com
       base: self
     connect-src:
       base: self
     font-src:
       base: self
     frame-src:
+      sources:
+        - auditor-consulting.dt
+        - auditor-consulting-media.dt
+        - www.youtube.com
       base: self
     img-src:
       sources:
@@ -45,8 +57,16 @@ enforce:
     prefetch-src:
       base: self
     script-src:
+      sources:
+        - auditor-consulting.dt
+        - auditor-consulting-media.dt
+        - www.youtube.com
       base: self
     style-src:
+      sources:
+        - auditor-consulting.dt
+        - auditor-consulting-media.dt
+        - www.youtube.com
       base: self
     worker-src:
       base: self
@@ -55,6 +75,8 @@ enforce:
     form-action:
       base: self
     frame-ancestors:
+      sources:
+        - auditor-consulting.dt
       base: self
   reporting:
     plugin: sitelog

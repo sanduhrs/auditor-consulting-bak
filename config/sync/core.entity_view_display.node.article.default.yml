@@ -11,12 +11,130 @@ dependencies:
     - field.field.node.article.field_tags
     - image.style.large
     - node.type.article
+    - views.view.revision_log
   module:
     - attribution
     - comment
     - image
+    - layout_builder
+    - layout_discovery
     - text
     - user
+    - views
+third_party_settings:
+  layout_builder:
+    allow_custom: false
+    enabled: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          7c58353b-e7f9-4d27-82b4-37437db366e0:
+            uuid: 7c58353b-e7f9-4d27-82b4-37437db366e0
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_image'
+              formatter:
+                type: image
+                settings:
+                  image_style: large
+                  image_link: ''
+                third_party_settings: {  }
+                label: hidden
+            additional: {  }
+            weight: 0
+          edcce3d6-8ce2-47b7-aadd-6e66da058887:
+            uuid: edcce3d6-8ce2-47b7-aadd-6e66da058887
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:body'
+              formatter:
+                type: text_default
+                settings: {  }
+                third_party_settings: {  }
+                label: hidden
+            additional: {  }
+            weight: 1
+          8422308a-b2ab-4f48-a2a7-01fe288cc55d:
+            uuid: 8422308a-b2ab-4f48-a2a7-01fe288cc55d
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_tags'
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            additional: {  }
+            weight: 2
+          4a4bc075-cd76-42db-a388-e9c7bc8b9f46:
+            uuid: 4a4bc075-cd76-42db-a388-e9c7bc8b9f46
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'extra_field_block:node:article:links'
+            additional: {  }
+            weight: 3
+          e5dc77f4-0606-4515-bf92-9dec71d10f61:
+            uuid: e5dc77f4-0606-4515-bf92-9dec71d10f61
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:comment'
+              formatter:
+                type: comment_default
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+            additional: {  }
+            weight: 4
+          f47e5726-40d0-4755-a085-2f3a898973bf:
+            uuid: f47e5726-40d0-4755-a085-2f3a898973bf
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:article:field_attribution'
+              formatter:
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+                type: attribution_creative_commons_icons
+            additional: {  }
+            weight: 5
+          3a64969c-17df-434d-bfbf-c17afeeaabed:
+            uuid: 3a64969c-17df-434d-bfbf-c17afeeaabed
+            region: content
+            configuration:
+              id: 'views_block:revision_log-block_1'
+              label: ''
+              provider: views
+              label_display: visible
+              views_label: ''
+              items_per_page: none
+              context_mapping: {  }
+            additional: {  }
+            weight: 6
+        third_party_settings: {  }
 _core:
   default_config_hash: ChmU3AVqDKU32A_fyChG0W9dTRKmVBR58B6OClCLvZI
 id: node.article.default
