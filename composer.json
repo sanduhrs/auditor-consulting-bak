@@ -31,6 +31,7 @@
         "drupal/openid_connect": "^1.1",
         "drupal/purge": "^3.0",
         "drupal/purge_purger_http": "^1.0",
+        "drupal/pwa": "^1.5",
         "drupal/redis": "^1.5",
         "drush/drush": "^10.4"
     },
