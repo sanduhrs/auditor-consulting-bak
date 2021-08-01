@@ -227,13 +227,13 @@ class SiwecosService {
    */
   public function getDomainToken(bool $update = FALSE): string {
     if ($this->domainToken && !$update) {
-      return (string) $this->domainToken;
+      return $this->domainToken;
     }
     else {
       foreach ($this->getDomains() as $domain) {
         if (parse_url($domain->domain, PHP_URL_HOST) === $this->domain) {
           $this->setDomainToken($domain->domainToken);
-          return (string) $this->domainToken;
+          return $this->domainToken;
         }
       }
     }
@@ -279,7 +279,7 @@ class SiwecosService {
         return FALSE;
       }
       $this->setApiToken($object->token);
-      return $object;
+      return $object->token;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -309,7 +309,7 @@ class SiwecosService {
       $object = json_decode($response->getBody()->getContents());
 
       if (!$object->domains) {
-        return FALSE;
+        return [];
       }
       return $object->domains;
     }
@@ -348,7 +348,6 @@ class SiwecosService {
     if ($scan) {
       $this->startScan();
     }
-    return $domain;
   }
 
   /**
@@ -377,7 +376,7 @@ class SiwecosService {
       if ($object->message !== 'Page successful validated') {
         return FALSE;
       }
-      return $object;
+      return TRUE;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -410,7 +409,7 @@ class SiwecosService {
       if (!$object->id) {
         return FALSE;
       }
-      return $object;
+      return TRUE;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -443,7 +442,7 @@ class SiwecosService {
         return FALSE;
       }
       $this->domainToken = $object->domainToken;
-      return $object;
+      return $object->domainToken;
     }
     catch (\Exception $e) {
       return FALSE;

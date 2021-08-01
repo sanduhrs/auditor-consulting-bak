@@ -43,9 +43,6 @@ class SiwecosCommands extends DrushCommands {
 //    $response = $service->registerDomain();
 //    echo print_r($response, TRUE), PHP_EOL;
 
-//    $response = $service->getDomains();
-//    echo print_r($response, T1RUE), PHP_EOL;
-
 //    $response = $service->validateDomain(TRUE);
 //    echo print_r($response, TRUE), PHP_EOL;
 
@@ -55,8 +52,8 @@ class SiwecosCommands extends DrushCommands {
 //    $response = $service->startScan();
 //    echo print_r($response, TRUE), PHP_EOL;
 
-//    $response = $service->getScanResult();
-//    echo print_r($response, TRUE), PHP_EOL;
+    $response = $service->getScanResult();
+    echo print_r($response, TRUE), PHP_EOL;
   }
 
   /**
