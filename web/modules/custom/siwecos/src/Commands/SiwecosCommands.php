@@ -29,7 +29,7 @@ class SiwecosCommands extends DrushCommands {
     $service = \Drupal::service('siwecos.service');
 
     $service
-      ->setDomain('auditor.email')
+      ->setDomain('auditor.consulting')
       ->setEmail('stefan@auditor.email')
       ->setPassword('--1TCr0wd+')
       ->setApiToken('5z1GiFJRpSsX0JoQ9IXoPt1MN4Yh1wzTRr1u9q6082');
@@ -40,14 +40,14 @@ class SiwecosCommands extends DrushCommands {
 //    $response = $service->getDomains();
 //    echo print_r($response, TRUE), PHP_EOL;
 
-    $response = $service->registerDomain();
-    echo print_r($response, TRUE), PHP_EOL;
+//    $response = $service->registerDomain();
+//    echo print_r($response, TRUE), PHP_EOL;
 
 //    $response = $service->getDomains();
 //    echo print_r($response, T1RUE), PHP_EOL;
 
-    $response = $service->validateDomain(TRUE);
-    echo print_r($response, TRUE), PHP_EOL;
+//    $response = $service->validateDomain(TRUE);
+//    echo print_r($response, TRUE), PHP_EOL;
 
 //    $response = $service->verifyDomain();
 //    echo print_r($response, TRUE), PHP_EOL;

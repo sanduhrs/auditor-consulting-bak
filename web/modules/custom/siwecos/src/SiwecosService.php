@@ -227,13 +227,13 @@ class SiwecosService {
    */
   public function getDomainToken(bool $update = FALSE): string {
     if ($this->domainToken && !$update) {
-      return $this->domainToken;
+      return (string) $this->domainToken;
     }
     else {
       foreach ($this->getDomains() as $domain) {
         if (parse_url($domain->domain, PHP_URL_HOST) === $this->domain) {
           $this->setDomainToken($domain->domainToken);
-          return $this->domainToken;
+          return (string) $this->domainToken;
         }
       }
     }
@@ -275,8 +275,10 @@ class SiwecosService {
       $response = $this->httpClient->send($request);
       $object = json_decode($response->getBody()->getContents());
 
+      if (!$object->token) {
+        return FALSE;
+      }
       $this->setApiToken($object->token);
-
       return $object;
     }
     catch (\Exception $e) {
@@ -287,12 +289,12 @@ class SiwecosService {
   /**
    * Get registered domains.
    *
-   * @return array
+   * @return array|false
    *   An array of registered domains.
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function getDomains(): array {
+  public function getDomains() {
     try {
       $request = new Request(
         'POST',
@@ -306,6 +308,9 @@ class SiwecosService {
       $response = $this->httpClient->send($request);
       $object = json_decode($response->getBody()->getContents());
 
+      if (!$object->domains) {
+        return FALSE;
+      }
       return $object->domains;
     }
     catch (\Exception $e) {
@@ -343,7 +348,7 @@ class SiwecosService {
     if ($scan) {
       $this->startScan();
     }
-    return $domains;
+    return $domain;
   }
 
   /**
@@ -369,10 +374,10 @@ class SiwecosService {
       $response = $this->httpClient->send($request);
       $object = json_decode($response->getBody()->getContents());
 
-      if ($object->hasFailed) {
+      if ($object->message !== 'Page successful validated') {
         return FALSE;
       }
-      return TRUE;
+      return $object;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -397,10 +402,15 @@ class SiwecosService {
           'Content-Type' => 'application/json;charset=UTF-8',
           'userToken' => $this->apiToken,
         ],
-        json_encode(['domain' => $this->domain, 'dangerLevel' => 10])
+        json_encode(['domain' => 'http://' . $this->domain, 'dangerLevel' => 10])
       );
       $response = $this->httpClient->send($request);
-      return TRUE;
+      $object = json_decode($response->getBody()->getContents());
+
+      if (!$object->id) {
+        return FALSE;
+      }
+      return $object;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -429,12 +439,11 @@ class SiwecosService {
       $response = $this->httpClient->send($request);
       $object = json_decode($response->getBody()->getContents());
 
-      if ($object->hasFailed) {
+      if (!$object->domainId) {
         return FALSE;
       }
-
       $this->domainToken = $object->domainToken;
-      return $object->domainToken;
+      return $object;
     }
     catch (\Exception $e) {
       return FALSE;
@@ -461,7 +470,12 @@ class SiwecosService {
         ]
       );
       $response = $this->httpClient->send($request);
-      return json_decode($response->getBody()->getContents());
+      $object = json_decode($response->getBody()->getContents());
+
+      if (!$object->scanStarted) {
+        return FALSE;
+      }
+      return $object;
     }
     catch (\Exception $e) {
       return FALSE;
