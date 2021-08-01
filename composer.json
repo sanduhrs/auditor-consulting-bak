@@ -10,6 +10,18 @@
     },
     "repositories": [
         {
+            "type": "package",
+            "package": {
+                "name": "npm-asset/jquery-circle-progress",
+                "version": "1.2.2",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "https://github.com/kottenator/jquery-circle-progress/archive/refs/tags/1.2.2.tar.gz",
+                    "type": "tar"
+                }
+            }
+        },
+        {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
@@ -32,7 +44,8 @@
         "drupal/purge": "^3.0",
         "drupal/purge_purger_http": "^1.0",
         "drupal/redis": "^1.5",
-        "drush/drush": "^10.4"
+        "drush/drush": "^10.4",
+        "npm-asset/jquery-circle-progress": "^1.2"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -51,6 +64,9 @@
         "installer-paths": {
             "web/core": [
                 "type:drupal-core"
+            ],
+            "web/libraries/jquery-circle-progress": [
+                "npm-asset/jquery-circle-progress"
             ],
             "web/libraries/{$name}": [
                 "type:drupal-library"
