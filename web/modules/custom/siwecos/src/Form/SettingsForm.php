@@ -86,8 +86,8 @@ class SettingsForm extends ConfigFormBase {
       $form_state->setErrorByName('password', $this->t('The value is not correct.'));
     }
     else {
-      if ($result = $siwecosService->registerDomain()) {
-        $form_state->setValue('domain_token', $result->domainToken);
+      if ($domain_token = $siwecosService->registerDomain()) {
+        $form_state->setValue('domain_token', $domain_token);
       }
       $form_state->setValue('api_token', $siwecosService->getApiToken());
     }
@@ -119,3 +119,4 @@ class SettingsForm extends ConfigFormBase {
   }
 
 }
+
