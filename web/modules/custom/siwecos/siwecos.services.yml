@@ -1,0 +1,9 @@
+services:
+  siwecos.service:
+    class: Drupal\siwecos\SiwecosService
+    arguments: ['@config.factory', '@http_client']
+  siwecos.event_subscriber:
+    class: Drupal\siwecos\EventSubscriber\SiwecosSubscriber
+    arguments: ['@messenger']
+    tags:
+      - { name: event_subscriber }

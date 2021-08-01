@@ -1,0 +1,12 @@
+siwecos.settings_form:
+  title: Siwecos
+  description: 'Configure Siwecos security report.'
+  parent: system.admin_config_system
+  route_name: siwecos.settings_form
+  weight: 10
+siwecos.report:
+  title: 'Siwecos security report'
+  description: 'See the results of the Siwecos security report.'
+  route_name: siwecos.report
+  parent: system.admin_reports
+  weight: 0

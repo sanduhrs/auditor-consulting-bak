@@ -1,0 +1,38 @@
+jquery-circle-progress:
+  remote: https://github.com/swehacker/jquery.gauge
+  version: 0.1.6
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/swehacker/jquery.gauge/master/MIT-LICENSE.txt
+    gpl-compatible: true
+  js:
+    /libraries/jquery-circle-progress/dist/circle-progress.js: {}
+general:
+  version: 0.0.1
+  css:
+    layout:
+      css/siwecos.css: {}
+seal:
+  remote: https://siwecos.de/plugins/content/sealoftrust/seal.js
+  version: 1.2.6
+  license:
+    name: ''
+    url: ''
+    gpl-compatible: ''
+  js:
+    js/seal.js: {}
+circle-progress:
+  version: 0.0.1
+  license:
+    name: ''
+    url: ''
+    gpl-compatible: true
+  js:
+    js/circle-progress.js: {}
+  css:
+    layout:
+      css/circle-progress.css: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - siwecos/jquery-circle-progress

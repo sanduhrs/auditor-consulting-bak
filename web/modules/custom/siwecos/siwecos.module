@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Siwecos module.
+ */
+
+use Drupal\siwecos\Controller\SiwecosController;
+
+/**
+ * Implements hook_page_attachments().
+ */
+function siwecos_page_attachments(&$variables) {
+  if (!$domain_token = \Drupal::config('siwecos.settings')->get('domain_token')) {
+    return;
+  }
+
+  $name = 'siwecostoken';
+  $tag = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => $name,
+      'content' => $domain_token,
+    ],
+  ];
+  $variables['#attached']['html_head'][] = [$tag, $name];
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function siwecos_requirements($phase) {
+  /** @var \Drupal\siwecos\SiwecosService $siwecosService */
+  $siwecosService = \Drupal::service('siwecos.service');
+  $result = $siwecosService->getScanResult();
+  list($total_score, ) = array_values(
+    SiwecosController::getScannerStats($result->scanners ?? [])
+  );
+
+  $requirements = [];
+  if ($phase == 'runtime') {
+    $requirements['siwecos'] = [
+      'title' => t('Siwecos'),
+      'severity' => SiwecosController::getRequirementSeverity($total_score),
+      'description' => SiwecosController::getRequirementSeverityDescription($total_score),
+    ];
+  }
+  return $requirements;
+}

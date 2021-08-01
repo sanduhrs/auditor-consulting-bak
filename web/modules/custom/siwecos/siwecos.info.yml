@@ -1,0 +1,7 @@
+name: Siwecos
+type: module
+description: security scanning service trying to help website owners making there site more secure.
+package: Security
+core_version_requirement: ^8 || ^9
+
+configure: siwecos.settings_form
