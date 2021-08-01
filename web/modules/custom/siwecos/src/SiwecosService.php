@@ -70,6 +70,13 @@ class SiwecosService {
   protected $domainToken;
 
   /**
+   * The verification status.
+   *
+   * @var bool
+   */
+  protected $verified;
+
+  /**
    * Constructs a SiwecosService object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -230,6 +237,7 @@ class SiwecosService {
         }
       }
     }
+    return '';
   }
 
   /**
@@ -306,14 +314,107 @@ class SiwecosService {
   }
 
   /**
-   * Register domain.
+   * Validate domain.
+   */
+  public function validateDomain(bool $scan = FALSE) {
+    $domains = $this->getDomains();
+
+    $found = FALSE;
+    foreach ($domains as $domain) {
+      if ($domain->domain === $this->domain) {
+        $found = TRUE;
+        $this->verified = $domain->verificationStatus;
+        $this->domainToken = $domain->domainToken;
+        break;
+      }
+    }
+
+    if (!$found) {
+      $found = $this->registerDomain();
+    }
+
+    if ($found && !$this->verified) {
+      $this->verified = $this->verifyDomain();
+
+      // New domain => init scan.
+      $scan = $scan || $this->verified;
+    }
+
+    if ($scan) {
+      $this->startScan();
+    }
+    return $domains;
+  }
+
+  /**
+   * Verify domain.
    *
    * @return bool
-   *   A boolean whether the domain is registered or not.
+   *   Boolean whether verification was successful.
    *
    * @throws \GuzzleHttp\Exception\GuzzleException
    */
-  public function registerDomain(): bool {
+  public function verifyDomain() {
+    try {
+      $request = new Request(
+        'POST',
+        $this->apiUrl . '/domains/verifyDomain',
+        [
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/json;charset=UTF-8',
+          'userToken' => $this->apiToken,
+        ],
+        json_encode(['domain' => 'http://' . $this->domain])
+      );
+      $response = $this->httpClient->send($request);
+      $object = json_decode($response->getBody()->getContents());
+
+      if ($object->hasFailed) {
+        return FALSE;
+      }
+      return TRUE;
+    }
+    catch (\Exception $e) {
+      return FALSE;
+    }
+  }
+
+  /**
+   * Start scan.
+   *
+   * @return \Psr\Http\Message\ResponseInterface|false
+   *   A response object or false.
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   */
+  public function startScan() {
+    try {
+      $request = new Request(
+        'POST',
+        $this->apiUrl . '/scan/start',
+        [
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/json;charset=UTF-8',
+          'userToken' => $this->apiToken,
+        ],
+        json_encode(['domain' => $this->domain, 'dangerLevel' => 10])
+      );
+      $response = $this->httpClient->send($request);
+      return TRUE;
+    }
+    catch (\Exception $e) {
+      return FALSE;
+    }
+  }
+
+  /**
+   * Register domain.
+   *
+   * @return string
+   *
+   * @throws \GuzzleHttp\Exception\GuzzleException
+   */
+  public function registerDomain() {
     try {
       $request = new Request(
         'POST',
@@ -323,17 +424,17 @@ class SiwecosService {
           'Content-Type' => 'application/json;charset=UTF-8',
           'userToken' => $this->apiToken,
         ],
-        json_encode(['domain' => $this->domain, 'danger_level' => 10])
+        json_encode(['domain' => 'http://' . $this->domain, 'danger_level' => 10])
       );
       $response = $this->httpClient->send($request);
       $object = json_decode($response->getBody()->getContents());
 
-      if (empty($object->domainId) || empty($object->domainToken)) {
+      if ($object->hasFailed) {
         return FALSE;
       }
 
       $this->domainToken = $object->domainToken;
-      return TRUE;
+      return $object->domainToken;
     }
     catch (\Exception $e) {
       return FALSE;

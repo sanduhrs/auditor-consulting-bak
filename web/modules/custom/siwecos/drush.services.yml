@@ -1,0 +1,5 @@
+services:
+  siwecos.commands:
+    class: \Drupal\siwecos\Commands\SiwecosCommands
+    tags:
+      - { name: drush.command }

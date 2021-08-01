@@ -89,11 +89,13 @@ class SiwecosController extends ControllerBase {
     $build['header']['score'] = [
       '#type' => 'inline_template',
       '#template' => <<<EOF
-<div class="score">
-<div class="siwecos-circle__circle" style="float: left;margin-right: 2em;" data-size="50" data-value="{{ (total_score/100) }}" data-fill="{&quot;color&quot;: &quot;rgba({{ rgba }})&quot;}"><strong>{{ total_score }}<i>%</i></strong></div>
-<h2>{{ domain }}</h2>
-<div>{{ date_start|format_date }}</div>
-<div><a href="https://siwecos.de/en/support/total-score" target="_blank">{{ "What does the SIWECOS Score mean?"|trans }}</a></div>
+<div class="siwecos__score">
+  <div class="siwecos__circle-progress" style="float: left;margin-right: 2em;" data-size="50" data-value="{{ (total_score/100) }}" data-fill="{&quot;color&quot;: &quot;rgba({{ rgba }})&quot;}"><strong>{{ total_score }}<i>%</i></strong></div>
+  <h2>{{ domain }}</h2>
+  <div>{{ date_start|format_date }}</div>
+  <div>
+    <a href="https://siwecos.de/en/support/total-score" target="_blank">{{ "What does the SIWECOS Score mean?"|trans }}</a>
+  </div>
 </div>
 EOF,
       '#context' => [
@@ -105,7 +107,7 @@ EOF,
       ],
       '#attached' => [
         'library' => [
-          'siwecos/circle-progress',
+          'siwecos/siwecos',
         ],
       ],
     ];
@@ -133,10 +135,10 @@ EOF,
       foreach ($scanner->result as $item_id => $item) {
         $build['scanner-fieldset-' . $key][$item_id . '-name'] = [
           '#type' => 'details',
-          '#title' => '<span class="siwecos-status-counter__status-icon siwecos-status-counter__status-icon--' . $item->scoreTypeRaw . '"></span>' . strip_tags($item->name),
+          '#title' => '<span class="siwecos__status-icon siwecos__status-icon--' . $item->scoreTypeRaw . '"></span>' . strip_tags($item->name),
           '#attached' => [
             'library' => [
-              'siwecos/general',
+              'siwecos/siwecos',
             ],
           ],
         ];
@@ -220,9 +222,9 @@ EOF,
       return t('Most SIWECOS tests are passing.');
     }
     elseif ($score >= 50) {
-      return t('Some SIWECOS tests are passing.');
+      return t('Only some SIWECOS tests are passing.');
     }
-    return t('Few SIWECOS tests are passing.');
+    return t('Just a few or none SIWECOS tests are passing.');
   }
 
   /**

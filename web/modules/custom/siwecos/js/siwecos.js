@@ -1,7 +1,7 @@
 (function ($, Drupal) {
-  Drupal.behaviors.siwecosCircleProgress = {
+  Drupal.behaviors.siwecos = {
     attach: function (context, settings) {
-      $('.siwecos-circle__circle', context).once('siwecos-circle-progress ').each(function () {
+      $('.siwecos__circle-progress', context).once('siwecos-circle-progress ').each(function () {
         $(this).circleProgress();
       });
     }

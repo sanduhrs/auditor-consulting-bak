@@ -86,10 +86,9 @@ class SettingsForm extends ConfigFormBase {
       $form_state->setErrorByName('password', $this->t('The value is not correct.'));
     }
     else {
-      $siwecosService->registerDomain();
-
+      $domain_token = $siwecosService->registerDomain();
+      $form_state->setValue('domain_token', $domain_token);
       $form_state->setValue('api_token', $siwecosService->getApiToken());
-      $form_state->setValue('domain_token', $siwecosService->getDomainToken());
     }
     parent::validateForm($form, $form_state);
   }
@@ -110,6 +109,10 @@ class SettingsForm extends ConfigFormBase {
     // and enable domain verification.
     $cid = (new Url('<front>'))->setAbsolute()->toString() . ':';
     \Drupal::cache('page')->delete($cid);
+
+    /** @var \Drupal\siwecos\SiwecosService $siwecosService */
+    $siwecosService = \Drupal::service('siwecos.service');
+    $siwecosService->validateDomain(TRUE);
 
     parent::submitForm($form, $form_state);
   }
