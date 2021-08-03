@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d415beefbf8ed765eccc49c71342d019",
+    "content-hash": "700c309d8d503c8dfd675ba2387b352a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2604,6 +2604,60 @@
             "homepage": "https://www.drupal.org/project/redis",
             "support": {
                 "source": "https://git.drupalcode.org/project/redis"
+            }
+        },
+        {
+            "name": "drupal/siwecos",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/siwecos.git",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/siwecos-1.1.1.zip",
+                "reference": "1.1.1",
+                "shasum": "924b957d35fb80e4c3704d3fd791b6c4921428f4"
+            },
+            "require": {
+                "composer/installers": "^1.11",
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.1",
+                    "datestamp": "1628015687",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "installer-paths": {
+                    "web/libraries/jquery-circle-progress": [
+                        "npm-asset/jquery-circle-progress"
+                    ]
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "C-Logemann",
+                    "homepage": "https://www.drupal.org/user/218368"
+                },
+                {
+                    "name": "sanduhrs",
+                    "homepage": "https://www.drupal.org/user/28074"
+                }
+            ],
+            "description": "security scanning service trying to help website owners making there site more secure.",
+            "homepage": "https://www.drupal.org/project/siwecos",
+            "support": {
+                "source": "https://git.drupalcode.org/project/siwecos"
             }
         },
         {
