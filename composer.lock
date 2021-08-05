@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "700c309d8d503c8dfd675ba2387b352a",
+    "content-hash": "edb141a1a37d4f0442f2339739a863e0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2662,17 +2662,11 @@
         },
         {
             "name": "drupal/webhooks",
-            "version": "1.0.0-alpha8",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/webhooks.git",
-                "reference": "8.x-1.0-alpha8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/webhooks-8.x-1.0-alpha8.zip",
-                "reference": "8.x-1.0-alpha8",
-                "shasum": "4a05a335052aa8e7919f17331c3f561beb59cfcf"
+                "reference": "4dcae48d406cfdf68a003181be8709ebdff8cea6"
             },
             "require": {
                 "drupal/core": "^8 || ^9",
@@ -2680,12 +2674,15 @@
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.0-alpha8",
-                    "datestamp": "1597308634",
+                    "version": "8.x-1.0-alpha8+4-dev",
+                    "datestamp": "1621939607",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Alpha releases are not covered by Drupal security advisories."
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 },
                 "drush": {

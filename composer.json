@@ -45,7 +45,7 @@
         "drupal/purge_purger_http": "^1.0",
         "drupal/redis": "^1.5",
         "drupal/siwecos": "^1.1",
-        "drupal/webhooks": "@dev",
+        "drupal/webhooks": "dev-1.x",
         "drush/drush": "^10.4",
         "npm-asset/jquery-circle-progress": "^1.2"
     },
