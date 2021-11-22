@@ -47,6 +47,7 @@ enforce:
     img-src:
       sources:
         - 'data:'
+        - siegel.siwecos.de
       base: self
     manifest-src:
       base: self
