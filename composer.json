@@ -36,6 +36,8 @@
         "drupal/core-recommended": "^9.1",
         "drupal/csp": "^1.14",
         "drupal/gin": "^3.0@dev",
+        "drupal/gin_login": "^1.0",
+        "drupal/gin_toolbar": "@dev",
         "drupal/id4me": "^2.0",
         "drupal/licenses": "^2.0",
         "drupal/memcache": "^2.2",
