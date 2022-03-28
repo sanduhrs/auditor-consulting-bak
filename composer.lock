@@ -2232,7 +2232,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/indieauth.git",
-                "reference": "7cae3b8ec45ed95c15cfc90b2f18d1b7ef9fe28b"
+                "reference": "9498af8df5fe27d36625ec9dc8b248b9d7991041"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
