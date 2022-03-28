@@ -41,7 +41,7 @@
         "drupal/id4me": "^2.0",
         "drupal/licenses": "^2.0",
         "drupal/memcache": "^2.2",
-        "drupal/oembed_providers": "^1.1",
+        "drupal/oembed_providers": "^2.0",
         "drupal/openid_connect": "^1.1",
         "drupal/purge": "^3.0",
         "drupal/purge_purger_http": "^1.0",

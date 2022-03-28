@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f0f9e440707af4b67d71c72ed558ad3",
+    "content-hash": "c4ff6e671796d36a0c4e224d7d227fa4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2352,26 +2352,26 @@
         },
         {
             "name": "drupal/oembed_providers",
-            "version": "1.1.5",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/oembed_providers.git",
-                "reference": "1.1.5"
+                "reference": "2.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/oembed_providers-1.1.5.zip",
-                "reference": "1.1.5",
-                "shasum": "5bfe095f65514246f6c15d1bafbe5b2454e2a53e"
+                "url": "https://ftp.drupal.org/files/projects/oembed_providers-2.0.2.zip",
+                "reference": "2.0.2",
+                "shasum": "161640caddc289856190fdbc33b53e16f690c10f"
             },
             "require": {
-                "drupal/core": "^8.8.0 || ^9.0"
+                "drupal/core": "^9.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.1.5",
-                    "datestamp": "1615050712",
+                    "version": "2.0.2",
+                    "datestamp": "1646068616",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
