@@ -39,6 +39,7 @@
         "drupal/gin_login": "^1.0",
         "drupal/gin_toolbar": "@dev",
         "drupal/id4me": "^2.0",
+        "drupal/indieauth": "^2-dev",
         "drupal/licenses": "^2.0",
         "drupal/memcache": "^2.2",
         "drupal/metatag": "^1.19",
