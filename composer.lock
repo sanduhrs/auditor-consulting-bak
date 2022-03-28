@@ -2286,7 +2286,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/indieauth.git",
-                "reference": "9625d0bb93c817d0eac445034a8a6b3eda5c821f"
+                "reference": "a741d2612abea2907e3e4cb522b8172626b50fe2"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -2300,7 +2300,7 @@
                 },
                 "drupal": {
                     "version": "2.0.x-dev",
-                    "datestamp": "1648488904",
+                    "datestamp": "1648496749",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
